@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <script>
+
+        generateHeader("MySite", 5, "red", "black");
+        
+        generateHeader("MySite", ["Button1", "Button2", "Button3", "Button4", "Button5"], "blue", "white");
+
+
+        function generateHeader(title, navItems, bgcolor, fontcolor) {
+            if (typeof navItems == 'number') {
+                var headerHtml = `<header style="background-color: ${bgcolor};">
+                        <div class="left-container">
+                            <h1 style="color: ${fontcolor}">${title}</h1>
+                        </div>
+
+                        <div class="right-container" style="background-color: ${bgcolor}">`;
+                for (let i=0;i<navItems;i++){
+                    headerHtml+=`<a href="#" class="btn" style="color:${fontcolor}">Empty</a>`;
+                }
+                headerHtml+=`
+                        </div>
+                        </header>`;
+            }
+            else if(Array.isArray(navItems)){
+                var headerHtml = `<header style="background-color: ${bgcolor};">
+                        <div class="left-container">
+                            <h1 style="color: ${fontcolor}">${title}</h1>
+                        </div>
+
+                        <div class="right-container" style="background-color: ${bgcolor}">`;
+                for (const el of navItems) {
+                    headerHtml+=`<a href="#" class="btn" style="color:${fontcolor}">${el}</a>`;
+                }
+
+                headerHtml+=`
+                        </div>
+                        </header>`;
+            }
+
+            document.write(headerHtml);
+
+        }
+    </script>
+</body>
+
+</html>
